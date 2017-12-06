@@ -7,6 +7,29 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
+    <style type="text/css">
+        
+        html {
+            background-image: url('../../../../images/BlackGrey.jpg') !important;
+            background-size:cover; /* <------ */
+            background-repeat: no-repeat;
+        }
+        body {
+            background-image: url('../../../../images/BlackGrey.jpg') !important;
+            color: #FFF !important;
+            background-size: cover; /* <------ */
+            background-repeat: no-repeat;
+        }
+        .box {
+            background: rgba(0,0,0,0.4);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,9 +40,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("sundar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" rel="home" href="#" title="Sundar">
+                    <img style="max-width:100px;  margin-top: -7px;" src="/images/Eagle.jpg"> Sundar
+                </a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse pull-right">
                 <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="#">Home</a>
@@ -46,20 +71,30 @@
                         </ul>
                     </li>
                 </ul>
-
-
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+        <footer class="footer navbar-fixed-bottom navbar-inverse">
+            <div class="col-md-4">
+                <fieldset>
+                    <legend> Question </legend>
+                    <p>.........</p>
+                    <p>.........</p>
+                </fieldset>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <fieldset>
+                    <legend> about app </legend>
+                    <p> ..........</p>
+                </fieldset>
+            </div>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

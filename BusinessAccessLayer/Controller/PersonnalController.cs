@@ -31,5 +31,13 @@ namespace BusinessAccessLayer.Controller
             model.PersonnalList = personnalService.List(searchText);
             return model.PersonnalList;
         }
+        public void Insert(PersonnalViewModel model)
+        {
+            personnalService.Insert(model);
+        }
+        public void Update(PersonnalViewModel model)
+        {
+            personnalService.Update(model);
+        }
     }
 }

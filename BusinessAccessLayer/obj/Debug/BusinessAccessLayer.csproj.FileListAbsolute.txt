@@ -11,3 +11,16 @@ C:\Users\Sundar\Desktop\Himal\BusinessAccessLayer\bin\Debug\EntityFramework.SqlS
 C:\Users\Sundar\Desktop\Himal\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\Sundar\Desktop\Himal\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.dll
 C:\Users\Sundar\Desktop\Himal\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.pdb
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.dll.config
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.dll
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\BusinessAccessLayer.pdb
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\EntityFramework.dll
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\EntityFramework.xml
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.dll
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\BusinessAccessLayer\obj\Debug\BusinessAccessLayer.pdb

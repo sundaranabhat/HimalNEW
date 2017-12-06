@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Service
 {
-   public interface IPersonnalService
+    public interface IPersonnalService
     {
-       List<PersonnalViewModel> List(string searchText);
-       PersonnalViewModel GetDetailById(int id);
+        List<PersonnalViewModel> List(string searchText);
+        PersonnalViewModel GetDetailById(int id);
+        void Insert(PersonnalViewModel model);
+        void Update(PersonnalViewModel model);
     }
 }

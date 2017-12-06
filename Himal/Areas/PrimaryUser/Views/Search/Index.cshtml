@@ -4,50 +4,58 @@
     Layout = "~/Areas/PrimaryUser/Views/Shared/_LayoutPrimaryUser.cshtml";
     int Sno = 1;
 }
-<br />
+<br /><br />
+<style type="text/css">
+    .box {
+        background: rgba(0,0,0,0.4);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+        border-radius: 4px;
+        padding: 20px;
+    }
+    /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
 <div class="row">
-    @using (Html.BeginForm())
-    {
-        <input type="text" class="form-control lg" name="searchText" />
-        <input type="submit" value="Search" />
-        <hr />
 
-        if (Model.PersonnalList.Count != 0)
-        {
-            <table class="table-bordered table-striped table-condensed table-responsive">
-                <thead>
-                    <tr class="danger">
-                        <th>
-                            S.No
-                        </th>
-                        <th>
-                            First Name
-                        </th>
-                        <th>Last Name</th>
-                        <th>
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.PersonnalList)
-                    {
-                        <tr>
-                            <td>@Sno</td>
-                            <td>@item.FIRSTNAME</td>
-                            <td>@item.LASTNAME</td>
-                            <td><a href="#">Detail</a></td>
-                        </tr>
-                        Sno = Sno + 1;
-                    }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <p>No Records found!</p>
-        }
+    @using (Html.BeginForm(new { @class = "form-horizontal" }))
+            {
+        <div class="row">
+            <div class="well well-lg well well-sm col-md-4">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control col-md-5" placeholder="Name, Employee ID, SSN" name="searchText" id="searchText">
+                    <div class="input-group-btn col-md-2">
+                        <input class="btn btn-default" type="submit" value="Search" id="btnSearch" name="btnSearch" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+
+
 
     }
+    <div class="row">
+        <div id="SearchResult">
+            @*@Html.Action("Search",Model)*@
+        </div>
+    </div>
+
 
 </div>
+<script src="~/Scripts/jQuery-2.1.4.min.js"></script>
+<script>
+    document.getElementById("searchText")
+        .addEventListener("keyup", function (event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                document.getElementById("btnSearch").click();
+            }
+        });
+</script>
+<script>
+    $('#searchText').keyup(function () {
+        var x = document.getElementById("searchText");
+        var searchText = x.value;
+        $("#SearchResult").load("/PrimaryUser/Search/Search",
+            { searchText: searchText });
+    });
+</script>

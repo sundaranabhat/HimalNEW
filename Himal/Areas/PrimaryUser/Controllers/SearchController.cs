@@ -20,20 +20,20 @@ namespace Himal.Areas.PrimaryUser.Controllers
             return View(model);
         }
 
-
-
-
-        [HttpPost]
-        public ActionResult Index(string searchText)
-        {
+        public ActionResult Search(string searchText)
+       {
 
             var bal = new PersonnalController();
             var model = new PersonnalListModel();
-            if (searchText.Trim() != "")
+            if(searchText==null)
+            {
+                return null;
+            }
+            if (searchText.Trim() != "" && searchText != null)
             {
                 model.PersonnalList = bal.GetList(searchText);
             }
-            return View(model);
+            return PartialView("Search", model);
         }
         public ActionResult Detail(int id)
         {
@@ -41,6 +41,64 @@ namespace Himal.Areas.PrimaryUser.Controllers
             var model = new PersonnalViewModel();
             model = bal.Detail(id);
             return View(model);
+        }
+        public ActionResult Create()
+        {
+            var model = new PersonnalViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(PersonnalViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var bal = new PersonnalController();
+                    bal.Insert(model);
+                    return RedirectToAction("Index", "Search");
+
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public ActionResult Edit(int id)
+        {
+            var model = new PersonnalViewModel();
+            var bal = new PersonnalController();
+            model = bal.Detail(id);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Edit(PersonnalViewModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var bal = new PersonnalController();
+                    bal.Update(model);
+                    return RedirectToAction("Index", "Search");
+                }
+                else
+                {
+                    return View();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
