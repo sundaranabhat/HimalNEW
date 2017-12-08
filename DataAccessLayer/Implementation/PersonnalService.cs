@@ -24,6 +24,10 @@ namespace DataAccessLayer.Implementation
                     model.ID = personnalValue.ID;
                     model.LASTNAME = personnalValue.LASTNAME;
                     model.PLACEOFBIRTH = personnalValue.PLACEOFBIRTH;
+                    model.FIRSTNAME = personnalValue.FIRSTNAME;
+                    model.GENDER = personnalValue.GENDER;
+                    model.DATEOFBIRTH = personnalValue.DATEOFBIRTH;
+                    model.DODID = personnalValue.DODID;
                 }
                     return model;
 
@@ -37,6 +41,11 @@ namespace DataAccessLayer.Implementation
                 var tableRow = new Personnel();
                 tableRow.FIRSTNAME = model.FIRSTNAME;
                 tableRow.LASTNAME = model.LASTNAME;
+                tableRow.DODID = model.DODID;
+                tableRow.GENDER = model.GENDER;
+                tableRow.EMAIL = model.EMAIL;
+                tableRow.DATEOFBIRTH = model.DATEOFBIRTH;
+                tableRow.PLACEOFBIRTH = model.PLACEOFBIRTH;
                 entity.Personnels.Add(tableRow);
                 entity.SaveChanges();
             }
@@ -56,6 +65,10 @@ namespace DataAccessLayer.Implementation
                     model.ID = item.ID;
                     model.FIRSTNAME = item.FIRSTNAME;
                     model.LASTNAME = item.LASTNAME;
+                    model.EMAIL = item.EMAIL;
+                    model.DODID = item.DODID;
+                    model.DATEOFBIRTH = item.DATEOFBIRTH;
+                    model.GENDER = item.GENDER;
 
                     ListModel.Add(model);
                 }
@@ -71,6 +84,10 @@ namespace DataAccessLayer.Implementation
                 var editData = entity.Personnels.Where(x => x.DODID == model.DODID).FirstOrDefault();
                 editData.FIRSTNAME = model.FIRSTNAME;
                 editData.LASTNAME = model.LASTNAME;
+                editData.DATEOFBIRTH = model.DATEOFBIRTH;
+                editData.DODID = model.DODID;
+                editData.EMAIL = model.EMAIL;
+                editData.GENDER = model.GENDER;
                 entity.Entry(editData).State = EntityState.Modified;
                 entity.SaveChanges();
             }
