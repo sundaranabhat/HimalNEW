@@ -33,7 +33,7 @@ namespace Himal.Areas.PrimaryUser.Controllers
             {
                 model.PersonnalList = bal.GetList(searchText);
             }
-            return PartialView("Search", model);
+            return PartialView("_Search", model);
         }
         public ActionResult Detail(int id)
         {
@@ -77,6 +77,7 @@ namespace Himal.Areas.PrimaryUser.Controllers
             model = bal.Detail(id);
             return View(model);
         }
+
         [HttpPost]
         public ActionResult Edit(PersonnalViewModel model)
         {
