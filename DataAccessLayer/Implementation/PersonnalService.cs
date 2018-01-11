@@ -17,7 +17,7 @@ namespace DataAccessLayer.Implementation
             using (var entity = new HimalDbEntities())
             {
                 var personnalValue = entity.Personnels.Where(x => x.ID == id).FirstOrDefault();
-               
+
                 var model = new PersonnalViewModel();
                 if (personnalValue != null)
                 {
@@ -29,7 +29,7 @@ namespace DataAccessLayer.Implementation
                     model.DATEOFBIRTH = personnalValue.DATEOFBIRTH;
                     model.DODID = personnalValue.DODID;
                 }
-                    return model;
+                return model;
 
             }
         }
@@ -55,10 +55,20 @@ namespace DataAccessLayer.Implementation
         {
             using (var entity = new HimalDbEntities())
             {
-                var personnalList = entity.Personnels.Where(x => x.FIRSTNAME.Contains(searchText) || x.LASTNAME.Contains(searchText)).ToList();
-
+                int dodId = 0;
+                bool checkInt = int.TryParse(searchText, out var n); // check searchText is integer or not, it returns true or false boolean value.
+                List<Personnel> personnalList = entity.Personnels.ToList();
                 var ListModel = new List<PersonnalViewModel>();
+                if (checkInt) // check  searchtext is integer 
+                {
+                    dodId = Convert.ToInt32(searchText); // if searchtext is integer then change searchText to int data type
+                    personnalList = personnalList.Where(x => x.DODID == dodId).ToList();  // filter according to DIDId
+                }
+                else
+                {
+                    personnalList = personnalList.Where(x => x.FIRSTNAME.Contains(searchText) || x.LASTNAME.Contains(searchText)).ToList(); // filter according to firstname or last name
 
+                }
                 foreach (var item in personnalList)
                 {
                     var model = new PersonnalViewModel();
@@ -69,11 +79,10 @@ namespace DataAccessLayer.Implementation
                     model.DODID = item.DODID;
                     model.DATEOFBIRTH = item.DATEOFBIRTH;
                     model.GENDER = item.GENDER;
-
                     ListModel.Add(model);
                 }
                 return ListModel;
-
+               
             }
         }
 
