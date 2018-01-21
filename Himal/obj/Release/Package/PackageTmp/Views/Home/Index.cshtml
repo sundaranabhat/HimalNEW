@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<br />
+    <div class="row">
+        <div class="col-md-6">
+            <div id="custom-search-input">
+                <div class="input-group col-xs-12">
+                    <input type="text" id="searchTxt" class="form-control input-lg" placeholder="Name, Employee ID, SSN" />
+                        <button class="btn btn-info btn-lg" type="button" id="btnSearch" name="btnSearch">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.getElementById("searchTxt")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("btnSearch").click();
+        alert("Search btn Clicked");
+    }
+    });
+    
+</script>

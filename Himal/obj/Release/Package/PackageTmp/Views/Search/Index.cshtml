@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br />
+<div ng-app="SSOApp">
+    <div ng-controller="SearchController" class="divSearchList">
+        <div class="row">
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="well well-lg well well-sm col-md-4">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control col-lg-6 " placeholder="Name, Employee ID, SSN" ng-model="searchText" id="searchText" autocomplete="off" tabindex="1" autofocus ng-keyup="search()">
+                    </div>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+                <div id="SearchResult">
+                    @*@Html.Action("Search",Model)*@
+                </div>
+            </div>
+            <div ng-show="divpersonnallist">
+                <div class="row">
+                    <div class="box">
+                        <table class="table-bordered  table-condensed table-responsive">
+                            <thead>
+                                <tr class="danger">
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>SSN</th>
+                                    <th>DOB</th>
+                                    <th>Place of Birth</th>
+                                    <th>Login ID</th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="personnal in personnalList">
+                                    <td> {{personnal.FIRSTNAME}} </td>
+                                    <td>{{personnal.LASTNAME}}</td>
+                                    <td>{{personnal.SSN}}</td>
+                                    <td>{{personnal.DATEOFBIRTH.slice(6, -2) | date: 'yyyy-MM-dd' }}</td>
+                                    <td>{{personnal.PLACEOFBIRTH}}</td>
+                                    <td>{{personnal.LOGINID}}</td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateData(personnal)" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="divEmpty">
+                <p>No Records Found! &nbsp; <a href="#" ng-click="ShowInsertForms()" class="btn btn-info">Click To Create</a></p>
+            </div>
+
+            <div ng-show="InsertForm">
+                <div class="panel panel-default box">
+                    <div class=" box panel-body form-horizontal payment-form">
+                        <div class="row">
+                            <p id="labelName" style="text-align:center">Insert Personnal Information</p>
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <label for="concept" class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"  placeholder="First Name" ng-model="FIRSTNAME" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control"  placeholder="Last Name" ng-model="LASTNAME"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">Place of Birth</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"  placeholder="Place of Birth" ng-model="PLACEOFBIRTH" />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="amount" class="col-sm-3 control-label">Gender</label>
+                            <div class="col-sm-9">
+                                <div class="radio">
+                                    <input type="radio"  ng-model="Gender" value="MALE">Male
+                                </div>
+                                <div class="radio">
+                                    <input type="radio"  ng-model="Gender" value="FEMALE">Female
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label for="date" class="col-sm-3 control-label">Date of Birth</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"  placeholder="Date of Birth" ng-model="DATEOFBIRTH.slice(6, -2) | date: 'yyyy-MM-dd'" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 text-right">
+                                <input type="button" id="btnSave" class="btn btn-default preview-add-button" value="Submit"ng-click="InsertData()" />
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.Hidden("ID")
+    </div>
+</div>
+

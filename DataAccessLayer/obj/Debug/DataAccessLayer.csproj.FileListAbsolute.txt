@@ -15,6 +15,6 @@ C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\bin\Deb
 C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\bin\Debug\EntityFramework.xml
 C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\obj\Debug\DataAccessLayer.dll
 C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
+C:\Users\Sundar\Documents\Visual Studio 2017\Himal\Himal\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache

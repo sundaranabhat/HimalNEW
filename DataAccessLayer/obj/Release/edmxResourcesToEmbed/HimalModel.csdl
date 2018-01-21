@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HimalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Personnel">
+    <Key>
+      <PropertyRef Name="DODID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="SSN" Type="Int32" Nullable="false" />
+    <Property Name="DODID" Type="Int32" Nullable="false" />
+    <Property Name="LOGINID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CONTRACTID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MIDDLENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SUFFIX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DATEOFBIRTH" Type="DateTime" Precision="0" />
+    <Property Name="PLACEOFBIRTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="GRADE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RATE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="UIC" Type="Int32" />
+    <Property Name="UNITID" Type="Int32" />
+    <Property Name="CLASS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CATAGOREY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="REPROTEDDATE" Type="DateTime" Precision="0" />
+    <Property Name="EVENTID" Type="Int32" />
+    <Property Name="ATTACHED" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COMMANDID" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Personnels" EntityType="Self.Personnel" />
+  </EntityContainer>
+</Schema>
