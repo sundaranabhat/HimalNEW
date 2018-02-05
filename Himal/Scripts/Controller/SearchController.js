@@ -1,36 +1,24 @@
 ﻿app.controller("SearchController", function ($scope, $http, SearchService) {
-    toggleDiv = function (divEmpty, divPersonalList, insertForm, divDetail)
-    {
+
+    toggleDiv = function (divEmpty, divPersonalList, insertForm, divDetail) {
+        console.log(divDetail);
         $scope.divEmpty = divEmpty;
         $scope.divpersonnallist = divPersonalList;
         $scope.InsertForm = insertForm;
         $scope.divDetail = divDetail;
     }
     $scope.search = function () {
-        toggleDiv(false,true,false,false);
+        toggleDiv(false, true, false, false);
 
-        //$scope.divpersonnallist = true;
-        //$scope.InsertForm = false;
-        //$scope.divEmpty = false;
-        //$scope.divDetail = false;
+
         SearchService.getSearch($scope.searchText).then(function (response) {
-            //debugger;
-           
-            if (response.data.length != 0) {
+            debugger;
+            if (response.data.length !== 0) {
                 toggleDiv(false, true, false, false);
-
-                //$scope.divpersonnallist = true;
-                //$scope.InsertForm = false;
-                //$scope.divEmpty = false;
-                //$scope.divDetail = false;
-
                 $scope.personnalList = response.data;
             }
             else {
                 toggleDiv(true, false, false, false);
-
-
-
             }
         }, function () {
             alert("Failed to Retrieve");
@@ -39,7 +27,7 @@
     };
     $scope.ShowInsertForms = function () {
         toggleDiv(false, false, true, false);
-
+        // debugger;
         //$scope.InsertForm = true;
         //$scope.divEmpty = false;
         //$scope.divDetail = false;
@@ -50,19 +38,21 @@
         $scope.DODID = "";
         document.getElementById('labelName').innerHTML = "Insert Personnal Information";
         document.getElementById("btnSave").setAttribute("value", "Submit");
-      //  document.getElementById("ID").value = 0;
+        //  document.getElementById("ID").value = 0;
 
     }
     $scope.InsertData = function () {
+        // debugger;
         var Action = document.getElementById("btnSave").getAttribute("value");
-        if (Action == "Submit") {
+
+        if (Action === "Submit") {
             document.getElementById('labelName').innerHTML = "Insert Personnal Information";
 
             $scope.personnalModel = {};
             $scope.personnalModel.FIRSTNAME = $scope.FIRSTNAME;
             $scope.personnalModel.LASTNAME = $scope.LASTNAME;
             $scope.personnalModel.DODID = $scope.DODID;
-            
+
             SearchService.Insert($scope.personnalModel).then(function (response) {
                 alert(response.data);
                 $scope.FIRSTNAME = "";
@@ -70,14 +60,13 @@
                 $scope.DODID = "";
             })
         }
-        else
-        {
+        else {
             $scope.personnalModel = {};
             $scope.personnalModel.FIRSTNAME = $scope.FIRSTNAME;
             $scope.personnalModel.LASTNAME = $scope.LASTNAME;
             $scope.personnalModel.DODID = $scope.DODID;
             $scope.personnalModel.ID = document.getElementById("ID").value;
-            
+
             SearchService.Update($scope.personnalModel).then(function (response) { // pass parameter $scope.personnalModel
                 alert(response.data);
                 $scope.FIRSTNAME = "";
@@ -86,9 +75,10 @@
                 document.getElementById("btnSave").setAttribute("value", "Submit");
             })
         }
-        }
-    $scope.UpdateData = function (personnal)
-    {
+
+    }
+    $scope.UpdateData = function (personnal) {
+       // alert(personnal);
         // debugger;
         document.getElementById('labelName').innerHTML = "Update Personnal Information";
         toggleDiv(false, false, true, false);
@@ -105,12 +95,11 @@
         $scope.DODID = personnal.DODID;
         document.getElementById("btnSave").setAttribute("value", "Update");
     }
-    $scope.Back = function ()
-    {
+    $scope.Back = function () {
         $scope.search(); // call search function
     }
-    $scope.Detail = function (personnal)
-    {
+    $scope.Detail = function (personnal) {
+       
         SearchService.Detail(personnal).then(function (response) {
             toggleDiv(false, false, false, true);
 
@@ -122,6 +111,9 @@
             document.getElementById("ID").value = personnal.ID;
             $scope.Detail_FirstName = personnal.FIRSTNAME;
             $scope.Detail_LastName = personnal.LASTNAME;
+            $scope.Detail_DODID = personnal.DODID;
+
         })
     }
+    
 })

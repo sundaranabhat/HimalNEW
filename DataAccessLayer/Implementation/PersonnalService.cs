@@ -11,6 +11,10 @@ namespace DataAccessLayer.Implementation
 {
     public class PersonnalService : IPersonnalService
     {
+        public PersonnalService()
+        {
+
+        }
 
         public PersonnalViewModel GetDetailById(int id)
         {
@@ -67,7 +71,7 @@ namespace DataAccessLayer.Implementation
             {
                 //int dodId = 0;
                // bool checkInt = int.TryParse(searchValue, out var n); // check searchText is integer or not, it returns true or false boolean value.
-                List<Personnel> personnalList = entity.Personnels.ToList();
+                var personnalList = entity.Personnels.ToList();
                 var ListModel = new List<PersonnalViewModel>();
                 //if (checkInt) // check  searchtext is integer 
                 //{
@@ -82,7 +86,9 @@ namespace DataAccessLayer.Implementation
                     }
                     else
                     {
-                        personnalList = personnalList.Where(x => x.FIRSTNAME.ToUpper().Contains(searchValue.ToUpper()) || x.LASTNAME.ToUpper().Contains(searchValue.ToUpper())).ToList(); // filter according to firstname or last name
+                    
+                 
+                        personnalList = personnalList.Where(x=>x.FIRSTNAME.ToUpper().Contains(searchValue.ToUpper()) || x.LASTNAME.ToUpper().Contains(searchValue.ToUpper())).ToList(); // filter according to firstname or last name
                     }
               //  }
                 foreach (var item in personnalList)
@@ -118,4 +124,7 @@ namespace DataAccessLayer.Implementation
             }
         }
     }
+
+
+    
 }

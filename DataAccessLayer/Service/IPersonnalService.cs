@@ -14,4 +14,6 @@ namespace DataAccessLayer.Service
         void Insert(PersonnalViewModel model);
         void Update(PersonnalViewModel model);
     }
+
+    
 }

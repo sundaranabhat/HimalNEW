@@ -5,176 +5,154 @@
 }
 
 <br /><br />
-<div ng-app="SSOApp">
-    <div ng-controller="SearchController" class="divSearchList">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" rel="home" href="#" title="Sundar">
-                        <img style="max-width:100px;  margin-top: -7px;" src="/images/Eagle.jpg"> Sundar
-                    </a>
-                </div>
-                <div class="navbar-collapse collapse pull-right">
-                    <ul class="nav navbar-nav">
-                        <li id="mGrid"><a data-bind="click: showGridView"> Personnal Info </a></li>
-                        <li id="mPhoto"><a data-bind="click: showphotoView"> Additional Information</a></li>
-                        <li id="mMine"><a data-bind="click: showMine"> Clearance Information </a></li>
-                    </ul>
 
-                    <ul class="navbar navbar-nav navbar-right">
-                        <li style="margin-top:10px; margin-right:10px;">
-                            Search
+<div class="row">
+    <div class="row"></div>
 
-                        </li>
-
-                        <li class="searchbox">
-                            <input ng-model="searchText" class="form-control col-lg-6" id="searchText" autocomplete="off" tabindex="1" autofocus ng-keyup="search()" style="margin-top:15px; margin-right:15px">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div ng-show="divpersonnallist">
         <div class="row">
+            <div class="box">
+                <table class="table-bordered  table-condensed table-responsive">
+                    <thead>
+                        <tr class="danger">
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>SSN</th>
+                            <th>DOB</th>
+                            <th>Place of Birth</th>
+                            <th>Login ID</th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="personnal in personnalList">
+                            <td> {{personnal.FIRSTNAME}} </td>
+                            <td>{{personnal.LASTNAME}}</td>
+                            <td>{{personnal.SSN}}</td>
+                            <td>{{personnal.DATEOFBIRTH.slice(6, -2) | date: 'yyyy-MM-dd' }}</td>
+                            <td>{{personnal.PLACEOFBIRTH}}</td>
+                            <td>{{personnal.LOGINID}}</td>
+                            <td>
+                                <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateData(personnal)" />
+                                <input type="button" class="btn btn-warning" value="Detail" ng-click="Detail(personnal)" />
 
-
-            <div class="row"></div>
-
-            <div ng-show="divpersonnallist">
-                <div class="row">
-                    <div class="box">
-                        <table class="table-bordered  table-condensed table-responsive">
-                            <thead>
-                                <tr class="danger">
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>SSN</th>
-                                    <th>DOB</th>
-                                    <th>Place of Birth</th>
-                                    <th>Login ID</th>
-                                    <th>
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="personnal in personnalList">
-                                    <td> {{personnal.FIRSTNAME}} </td>
-                                    <td>{{personnal.LASTNAME}}</td>
-                                    <td>{{personnal.SSN}}</td>
-                                    <td>{{personnal.DATEOFBIRTH.slice(6, -2) | date: 'yyyy-MM-dd' }}</td>
-                                    <td>{{personnal.PLACEOFBIRTH}}</td>
-                                    <td>{{personnal.LOGINID}}</td>
-                                    <td>
-                                        <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateData(personnal)" />
-                                        <input type="button" class="btn btn-warning" value="Detail" ng-click="Detail(personnal)" />
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div ng-show="divEmpty">
-                <p>No Records Found! &nbsp; <a href="#" ng-click="ShowInsertForms()" class="btn btn-info">Click To Create</a></p>
-            </div>
-
-            <div ng-show="InsertForm">
-                <div class="panel panel-default box">
-                    <div class=" box panel-body form-horizontal payment-form">
-                        <div class="row">
-                            <p id="labelName" style="text-align:center">Insert Personnal Information</p>
-                            <br />
-                        </div>
-                        <div class="form-group">
-                            <label for="concept" class="col-sm-3 control-label">First Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="First Name" ng-model="FIRSTNAME" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="description" class="col-sm-3 control-label">Last Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Last Name" ng-model="LASTNAME" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="amount" class="col-sm-3 control-label">Place of Birth</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Place of Birth" ng-model="PLACEOFBIRTH" />
-                            </div>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="amount" class="col-sm-3 control-label">Gender</label>
-                            <div class="col-sm-9">
-                                <div class="radio">
-                                    <input type="radio" ng-model="Gender" value="MALE">Male
-                                </div>
-                                <div class="radio">
-                                    <input type="radio" ng-model="Gender" value="FEMALE">Female
-
-                                </div>
-                            </div>
-                        </div>
-
-                        @*<div class="form-group">
-                                <label for="date" class="col-sm-3 control-label">Date of Birth</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control"  placeholder="Date of Birth" ng-model="DATEOFBIRTH.slice(6, -2) | date: 'yyyy-MM-dd'" />
-                                </div>
-                            </div>*@
-                        <div class="form-group">
-                            <div class="col-sm-12 text-right">
-                                <input type="button" id="btnCancel" class="btn btn-info" value="Back" ng-click="Back()" />
-                                <input type="button" id="btnSave" class="btn btn-default preview-add-button" value="Submit" ng-click="InsertData()" />
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div ng-show="divDetail">
-                <div class="detail">
-                    <header class="page-header">
-                        <h1 class="page-title">Details of {{Detail_FirstName}}</h1>
-                    </header>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
-                            <div class="panel panel-default">
-                                <div class="panel-heading resume-heading">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <p class="col-lg-2">FirstName</p>
-                                                <span class="col-lg-10 list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</span>
-                                                First Name: <p class="list-group-item">{{Detail_FirstName}}</p>
-                                                Full Name :<p class="list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</p>
-                                                <p class="list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</p>
-                                                <p class="list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</p>
-                                                <p class="list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</p>
-                                                <p class="list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</p>
-                                                <p class="list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</p>
-                                                <p class="list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</p>
-
-
-                                           <input type="button" class="btn btn-info" value="Back" ng-click="Back()" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        @Html.Hidden("ID")
     </div>
 </div>
+
+<div ng-show="divEmpty">
+    <p align="center">No Records Found! &nbsp; <a href="#" ng-click="ShowInsertForms()" class="btn btn-default btn-danger">Click To Create</a></p>
+</div>
+
+
+<div ng-show="InsertForm">
+    <form name="form" ng-submit="InsertData()">
+        <div class="panel panel-default box">
+            <div class=" box panel-body form-horizontal insert-form">
+                <div class="row">
+                    <p id="labelName" style="text-align:center">Insert Personnal Information</p>
+                    <br />
+                </div>
+                <div class="form-group">
+                    <div class="control-group" ng-class="{true: 'error'}[submitted]">
+                        <label class="col-sm-3 control-label" for="FirstName">First Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="FirstName" placeholder="First Name" ng-model="FIRSTNAME" required />
+                            <span class="help-inline" ng-show="submitted && form.FirstName.$error.required">Required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+
+
+                    <label for="description" class="col-sm-3 control-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="LastName" placeholder="First Name" ng-model="LASTNAME" required />
+                        <span class="help-inline" ng-show="submitted && form.LastName.$error.required">Required</span>
+
+                        @*<input type="text" class="form-control" placeholder="Last Name" ng-model="LASTNAME" required" ng-keyup="HideMessage()" />
+                            <p ng-show="builderLastName" style="color:red">{{messageL}}</p>*@
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="amount" class="col-sm-3 control-label"> Place of Birth</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" placeholder=Place of Birth" ng-model="PLACEOFBIRTH" ng-required="required" />
+
+
+                    </div>
+                    <div class="form-group">
+                        <label for="amount" class="col-sm-3 control-label">Gender</label>
+                        <div class="col-sm-9">
+                            <div class="radio">
+                                <input type="radio" ng-model="Gender" value="MALE" ng-required="!Gender">Male
+                            </div>
+                            <div class="radio">
+                                <input type="radio" ng-model="Gender" value="FEMALE"ng-required="!Gender">Female
+
+                            </div>
+                        </div>
+                    </div>
+
+                    @Html.Hidden("ID")
+                    <div class="form-group">
+                        <div class="col-sm-12 text-right">
+                            <input type="button" id="btnCancel" class="btn btn-default preview-add-button" value="Back" ng-click="Back()" />
+
+                            <button type="submit" class="btn btn-primary btn-large" value="Submit" id="btnSave" ng-click="submitted=true">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div ng-show="divDetail">
+    <div class="detail">
+        <header class="page-header">
+            <h1 class="page-title">Details of {{Detail_FirstName}} {{Detail_LastName}}</h1>
+        </header>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading resume-heading">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="col-lg-2">FirstName</p>
+                                <span class="col-lg-10 list-group-item">{{Detail_FirstName}} {{Detail_LastName}}</span>
+                                First Name: <p class="list-group-item">{{Detail_FirstName}}</p>
+                                Last Name :<p class="list-group-item"> {{Detail_MiddleName}}</p>
+                                <p class="list-group-item">{{Detail_DODID}} </p>
+                                <p class="list-group-item">{{Detail_LogonName}} </p>
+                                <p class="list-group-item">{{Detail_Gender}} </p>
+                                <p class="list-group-item">{{Detail_PlaceOfBirth}} </p>
+                                <p class="list-group-item">{{Detail_DateOfBirth}} </p>
+
+                                <input type="button" class="btn btn-info" value="Back" ng-click="Back()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 

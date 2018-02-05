@@ -19,7 +19,7 @@
             });
         },
         Update: function (personnalModel) {
-          //  console.log(personnalModel);
+            //  console.log(personnalModel);
             return $http({
                 method: "POST",
                 url: "/Search/Update",

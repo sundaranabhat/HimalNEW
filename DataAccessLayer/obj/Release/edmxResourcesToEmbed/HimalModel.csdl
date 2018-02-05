@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="HimalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Personnels" EntityType="HimalDbModel.Personnel" />
+    <FunctionImport Name="TestProc" ReturnType="Collection(HimalDbModel.TestProc_Result)" />
+    <EntitySet Name="LookupIdentifiers" EntityType="HimalDbModel.LookupIdentifier" />
+    <EntitySet Name="Profiles" EntityType="HimalDbModel.Profile" />
+    <EntitySet Name="ProfileIdentifiers" EntityType="HimalDbModel.ProfileIdentifier" />
+    <EntitySet Name="Personnel1" EntityType="HimalDbModel.Personnel1" />
+    <EntitySet Name="vPersonnels" EntityType="HimalDbModel.vPersonnel" />
+  </EntityContainer>
   <EntityType Name="Personnel">
     <Key>
       <PropertyRef Name="DODID" />
@@ -14,7 +23,7 @@
     <Property Name="MIDDLENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="SUFFIX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="DATEOFBIRTH" Type="DateTime" Precision="0" />
-    <Property Name="PLACEOFBIRTH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PLACEOFBIRTH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="GRADE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="RATE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -28,7 +37,106 @@
     <Property Name="ATTACHED" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="COMMANDID" Type="Int32" />
   </EntityType>
-  <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Personnels" EntityType="Self.Personnel" />
-  </EntityContainer>
+  <ComplexType Name="TestProc_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="SSN" Nullable="false" />
+    <Property Type="Int32" Name="DODID" Nullable="false" />
+    <Property Type="String" Name="LOGINID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CONTRACTID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LASTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FIRSTNAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MIDDLENAME" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SUFFIX" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="DATEOFBIRTH" Nullable="true" />
+    <Property Type="String" Name="PLACEOFBIRTH" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="GENDER" Nullable="true" MaxLength="1" />
+    <Property Type="String" Name="GRADE" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="RATE" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="UIC" Nullable="true" />
+    <Property Type="Int32" Name="UNITID" Nullable="true" />
+    <Property Type="String" Name="CLASS" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CATAGOREY" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="REPROTEDDATE" Nullable="true" />
+    <Property Type="Int32" Name="EVENTID" Nullable="true" />
+    <Property Type="String" Name="ATTACHED" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="COMMANDID" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="LookupIdentifier">
+    <Key>
+      <PropertyRef Name="TypeID" />
+    </Key>
+    <Property Name="TypeID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Identifier" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ProfileIdentifier">
+    <Key>
+      <PropertyRef Name="ProfileIdentifierID" />
+    </Key>
+    <Property Name="ProfileIdentifierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProfileID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="Int16" Nullable="false" />
+    <Property Name="Identifier" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Personnel1">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+    </Key>
+    <Property Name="ProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SMORelationship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Eligibility" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EligibilityDate" Type="DateTime" Precision="0" />
+    <Property Name="InvestigationType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PrevInvestigationCloseDate" Type="DateTime" Precision="0" />
+    <Property Name="PersonalCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositionSensitivity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NonSCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NDA" Type="DateTime" Precision="0" />
+    <Property Name="EventID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vPersonnel">
+    <Key>
+      <PropertyRef Name="ProfileID" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+    </Key>
+    <Property Name="ProfileID" Type="Int32" Nullable="false" />
+    <Property Name="DODID" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SMORelationship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="eligibility" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EligibilityDate" Type="DateTime" Precision="0" />
+    <Property Name="InvestigationType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PrevInvestigationCloseDate" Type="DateTime" Precision="0" />
+    <Property Name="PersonalCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PositionSensitivity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NonSCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SCIAccesses" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NDA" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

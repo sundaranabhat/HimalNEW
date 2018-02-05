@@ -22,9 +22,12 @@ namespace Himal
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+
             bundles.Add(new ScriptBundle("~/angular").Include("~/Scripts/angular.js",
                         "~/Scripts/app.js",
                         "~/Scripts/Service/SearchService.js",
+                         "~/Scripts/Service/vPersonnalService.js",
+                        "~/Scripts/Controller/ViewPersonnalCtrl.js",
                         "~/Scripts/Controller/SearchController.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

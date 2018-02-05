@@ -38,7 +38,9 @@ namespace DataAccessLayer.ViewModel
         public PersonnalListModel()
         {
             this.PersonnalList = new List<PersonnalViewModel>();
+            this.vPersonnalList = new List<vPersonnalViewModel>();
         }
         public List<PersonnalViewModel> PersonnalList { get; set; }
+        public List<vPersonnalViewModel> vPersonnalList { get; set; }
     }
 }

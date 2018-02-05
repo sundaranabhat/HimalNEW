@@ -9,8 +9,6 @@
     @Scripts.Render("~/angular")
 
 
-    
-
     <style type="text/css">
         html {
             background-image: url('../../../../images/BlackGrey.jpg') !important;
@@ -34,15 +32,22 @@
 
         /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
     </style>
+
 </head>
-<body>
-    <div class="container body-content">@RenderBody()</div>
+<div ng-app="SSOApp">
+    <div ng-controller="SearchController" class="divSearchList">
+        <div class="container">
+            @Html.Partial("_Navbar")
+        </div>
+        <body>
+            <div class="container body-content">@RenderBody()</div>
 
-    <div class="container">@Html.Partial("_Footer")</div>
+            <div class="container">@Html.Partial("_Footer")</div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
 
-    @RenderSection("scripts", required: false)
-</body>
+            @RenderSection("scripts", required: false)
+        </body>
+    
 </html>
