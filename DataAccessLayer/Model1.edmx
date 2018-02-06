@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HimalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="LookupIdentifier">
           <Key>
             <PropertyRef Name="TypeID" />
@@ -144,8 +144,7 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
     FROM [JPAS].[vPersonnel] AS [vPersonnel]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HimalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -229,6 +228,14 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <Property Name="NDA" Type="DateTime" Precision="0" />
           <Property Name="EventID" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LookupIdentifiers" EntityType="Self.LookupIdentifier" />
+          <EntitySet Name="Profiles" EntityType="Self.Profile" />
+          <EntitySet Name="ProfileIdentifiers" EntityType="Self.ProfileIdentifier" />
+          <EntitySet Name="Personnels" EntityType="Self.Personnel" />
+          <EntitySet Name="Personnel1" EntityType="Self.Personnel1" />
+          <EntitySet Name="vPersonnels" EntityType="HimalDbModel.vPersonnel" />
+        </EntityContainer>
         <EntityType Name="vPersonnel">
           <Key>
             <PropertyRef Name="ProfileID" />
@@ -237,8 +244,8 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           </Key>
           <Property Name="ProfileID" Type="Int32" Nullable="false" />
           <Property Name="DODID" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="MiddleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="SMORelationship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="eligibility" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -254,14 +261,6 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="NDA" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="LookupIdentifiers" EntityType="Self.LookupIdentifier" />
-          <EntitySet Name="Profiles" EntityType="Self.Profile" />
-          <EntitySet Name="ProfileIdentifiers" EntityType="Self.ProfileIdentifier" />
-          <EntitySet Name="Personnels" EntityType="Self.Personnel" />
-          <EntitySet Name="Personnel1" EntityType="Self.Personnel1" />
-          <EntitySet Name="vPersonnels" EntityType="Self.vPersonnel" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -356,24 +355,24 @@ warning 6002: The table/view 'HimalDb.JPAS.vPersonnel' does not have a primary k
           <EntitySetMapping Name="vPersonnels">
             <EntityTypeMapping TypeName="HimalDbModel.vPersonnel">
               <MappingFragment StoreEntitySet="vPersonnel">
-                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
-                <ScalarProperty Name="DODID" ColumnName="DODID" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
-                <ScalarProperty Name="eligibility" ColumnName="eligibility" />
-                <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
-                <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
-                <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
-                <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
-                <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
-                <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="POB" ColumnName="POB" />
                 <ScalarProperty Name="NDA" ColumnName="NDA" />
+                <ScalarProperty Name="POB" ColumnName="POB" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
+                <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
+                <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
+                <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
+                <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+                <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
+                <ScalarProperty Name="eligibility" ColumnName="eligibility" />
+                <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DODID" ColumnName="DODID" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

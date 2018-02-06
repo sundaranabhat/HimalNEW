@@ -89,24 +89,24 @@
     <EntitySetMapping Name="vPersonnels">
       <EntityTypeMapping TypeName="HimalDbModel.vPersonnel">
         <MappingFragment StoreEntitySet="vPersonnel">
-          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
-          <ScalarProperty Name="DODID" ColumnName="DODID" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-          <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
-          <ScalarProperty Name="eligibility" ColumnName="eligibility" />
-          <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
-          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
-          <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
-          <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
-          <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
-          <ScalarProperty Name="Grade" ColumnName="Grade" />
-          <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
-          <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
-          <ScalarProperty Name="DOB" ColumnName="DOB" />
-          <ScalarProperty Name="POB" ColumnName="POB" />
           <ScalarProperty Name="NDA" ColumnName="NDA" />
+          <ScalarProperty Name="POB" ColumnName="POB" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="SCIAccesses" ColumnName="SCIAccesses" />
+          <ScalarProperty Name="NonSCIAccesses" ColumnName="NonSCIAccesses" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="PositionSensitivity" ColumnName="PositionSensitivity" />
+          <ScalarProperty Name="PersonalCategory" ColumnName="PersonalCategory" />
+          <ScalarProperty Name="PrevInvestigationCloseDate" ColumnName="PrevInvestigationCloseDate" />
+          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+          <ScalarProperty Name="EligibilityDate" ColumnName="EligibilityDate" />
+          <ScalarProperty Name="eligibility" ColumnName="eligibility" />
+          <ScalarProperty Name="SMORelationship" ColumnName="SMORelationship" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DODID" ColumnName="DODID" />
+          <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

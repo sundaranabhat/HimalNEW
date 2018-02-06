@@ -70,7 +70,9 @@ namespace DataAccessLayer.Implementation
             using (var entity = new HimalDbEntities())
             {
                 //int dodId = 0;
-               // bool checkInt = int.TryParse(searchValue, out var n); // check searchText is integer or not, it returns true or false boolean value.
+                // bool checkInt = int.TryParse(searchValue, out var n); // check searchText is integer or not, it returns true or false boolean value.
+
+
                 var personnalList = entity.Personnels.ToList();
                 var ListModel = new List<PersonnalViewModel>();
                 //if (checkInt) // check  searchtext is integer 

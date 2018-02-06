@@ -20,6 +20,11 @@ namespace Himal.Controllers
             return View();
         }
 
+        public ActionResult TestTab()
+        {
+            return View();
+        }
+
         public JsonResult Search(string searchText)
         {
 

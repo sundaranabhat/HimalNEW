@@ -15,7 +15,7 @@
             debugger;
             if (response.data.length !== 0) {
                 toggleDiv(false, true, false, false);
-                $scope.personnalList = response.data;
+                $scope.vpersonnalList = response.data;
             }
             else {
                 toggleDiv(true, false, false, false);

@@ -199,6 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TestLayoutController.cs" />
     <Compile Include="Controllers\vPersonnalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -299,6 +300,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\TestLayout\Index.cshtml" />
     <Content Include="Views\vPersonnal\Index.cshtml" />
+    <Content Include="Views\Search\TestTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

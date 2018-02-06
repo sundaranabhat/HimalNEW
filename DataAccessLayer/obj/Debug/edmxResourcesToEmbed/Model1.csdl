@@ -80,6 +80,14 @@
     <Property Name="NDA" Type="DateTime" Precision="0" />
     <Property Name="EventID" Type="Int32" Nullable="false" />
   </EntityType>
+  <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LookupIdentifiers" EntityType="Self.LookupIdentifier" />
+    <EntitySet Name="Profiles" EntityType="Self.Profile" />
+    <EntitySet Name="ProfileIdentifiers" EntityType="Self.ProfileIdentifier" />
+    <EntitySet Name="Personnels" EntityType="Self.Personnel" />
+    <EntitySet Name="Personnel1" EntityType="Self.Personnel1" />
+    <EntitySet Name="vPersonnels" EntityType="HimalDbModel.vPersonnel" />
+  </EntityContainer>
   <EntityType Name="vPersonnel">
     <Key>
       <PropertyRef Name="ProfileID" />
@@ -88,8 +96,8 @@
     </Key>
     <Property Name="ProfileID" Type="Int32" Nullable="false" />
     <Property Name="DODID" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="MiddleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="SMORelationship" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="eligibility" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -105,12 +113,4 @@
     <Property Name="POB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="NDA" Type="DateTime" Precision="0" />
   </EntityType>
-  <EntityContainer Name="HimalDbEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="LookupIdentifiers" EntityType="Self.LookupIdentifier" />
-    <EntitySet Name="Profiles" EntityType="Self.Profile" />
-    <EntitySet Name="ProfileIdentifiers" EntityType="Self.ProfileIdentifier" />
-    <EntitySet Name="Personnels" EntityType="Self.Personnel" />
-    <EntitySet Name="Personnel1" EntityType="Self.Personnel1" />
-    <EntitySet Name="vPersonnels" EntityType="Self.vPersonnel" />
-  </EntityContainer>
 </Schema>
